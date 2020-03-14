@@ -20,7 +20,7 @@ enum Endpoint {
         case .production:
             urlComponents.scheme = "https"
             urlComponents.host = "itunes.apple.com"
-            urlComponents.path = "/us/rss/topapplications/"
+            urlComponents.path = "/us/rss/topfreeapplications/"
         }
         return urlComponents
     }
