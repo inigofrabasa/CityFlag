@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
     func makeRequest() {
         LibraryAPI.sharedInstance.getInformation(Success: { (result) in
-            print(result.title)
+            print(result.title?.label ?? "no title")
         }) { (error) in
             print(error)
         }
