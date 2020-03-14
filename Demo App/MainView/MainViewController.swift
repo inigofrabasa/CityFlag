@@ -2,29 +2,49 @@
 //  MainViewController.swift
 //  Demo App
 //
-//  Created by Emmanuel Casañas Cruz on 13/03/20.
+//  Created by Iñigo Flores Rabasa on 13/03/20.
 //  Copyright © 2020 Iñigo Flores Rabasa. All rights reserved.
 //
 
 import UIKit
+import Bond
 
-class MainViewController: UIViewController {
-
+class MainViewController: UIViewController, StoryboardInstanciable{
+    
+    @IBOutlet weak var appsTableview: UITableView!
+    
+    var viewModel: MainViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configure()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configure(with viewModel: MainViewModel) {
+        self.viewModel = viewModel
     }
-    */
+    
+    func configure() {
+        _ = viewModel.titleView.observeNext { [weak self] (title) in
+            DispatchQueue.main.async {
+                self?.title = title
+            }
+        }
+        _ = viewModel.apps.bind(to: appsTableview) { (apps, indexPath, tableView) -> UITableViewCell in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AppTableViewCell", for: indexPath) as! AppTableViewCell
+            let dataSource = AppTableViewCellModelDataSource(entry: apps[indexPath.row])
+            cell.configure(with: AppTableViewCellModel(dataSource: dataSource))
+            return cell
+        }
+    }
+}
 
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedApp = viewModel.apps.value[indexPath.row]
+        let currentCell = tableView.cellForRow(at: indexPath) as? AppTableViewCell
+        let logo = currentCell?.appImageView.image
+        viewModel.onTap(selected: selectedApp, logo: logo!)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
