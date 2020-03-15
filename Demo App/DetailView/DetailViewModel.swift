@@ -11,14 +11,14 @@ import Bond
 
 struct DetailViewModelDataSource: ViewModelDataSource {
     let context: Context
-    let entry: Entry
+    let entry: AppEntity
     let logo: UIImage
 }
 
 class DetailViewModel {
     private let router: DetailRouter
     private(set) var context: Context
-    private var entry: Entry
+    private var entry: AppEntity
     
     let appTitle = Observable("")
     let appDescription = Observable("")
@@ -38,10 +38,10 @@ class DetailViewModel {
 
 private extension DetailViewModel {
     func configure() {
-        appTitle.value = entry.name?.label ?? ""
-        appDescription.value = entry.summary?.label ?? ""
-        appLink.value = "Release Date: " + self.prettyDate(current: (entry.releaseDate?.label)!)
-        appCopyRigths.value = entry.rights?.label ?? ""
+        appTitle.value = entry.name ?? ""
+        appDescription.value = entry.summary ?? ""
+        appLink.value = "Release Date: " + self.prettyDate(current: (entry.releaseDate)!)
+        appCopyRigths.value = entry.rigths ?? ""
     }
     
     func prettyDate(current: String) -> String {

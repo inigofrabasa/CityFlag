@@ -45,5 +45,4 @@ struct Feed : Codable {
 		link = try values.decodeIfPresent([Link].self, forKey: .link)
 		id = try values.decodeIfPresent(Id.self, forKey: .id)
 	}
-
 }

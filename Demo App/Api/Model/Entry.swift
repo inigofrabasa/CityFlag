@@ -13,18 +13,18 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct Entry : Codable {
-	let name : Name?
-	let image : [Image]?
-	let summary : Summary?
-	let price : Price?
-	let contentType : ContentType?
-	let rights : Rights?
-	let title : Title?
-	let link : [Link]?
-	let id : Id?
-	let artist: Artist?
-	let category: Category?
-	let releaseDate: ReleaseDate?
+	var name : Name?
+	var image : [Image]?
+	var summary : Summary?
+	var price : Price?
+	var contentType : ContentType?
+	var rights : Rights?
+	var title : Title?
+	var link : [Link]?
+	var id : Id?
+	var artist: Artist?
+	var category: Category?
+	var releaseDate: ReleaseDate?
 
 	enum CodingKeys: String, CodingKey {
 

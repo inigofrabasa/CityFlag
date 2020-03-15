@@ -30,7 +30,7 @@ class MainViewController: UIViewController, StoryboardInstanciable{
                 self?.title = title
             }
         }
-        _ = viewModel.apps.bind(to: appsTableview) { (apps, indexPath, tableView) -> UITableViewCell in
+        _ = viewModel.storedApps.bind(to: appsTableview) { (apps, indexPath, tableView) -> UITableViewCell in
             let cell = tableView.dequeueReusableCell(withIdentifier: "AppTableViewCell", for: indexPath) as! AppTableViewCell
             let dataSource = AppTableViewCellModelDataSource(entry: apps[indexPath.row])
             cell.configure(with: AppTableViewCellModel(dataSource: dataSource))
@@ -41,7 +41,7 @@ class MainViewController: UIViewController, StoryboardInstanciable{
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedApp = viewModel.apps.value[indexPath.row]
+        let selectedApp = viewModel.storedApps.value[indexPath.row]
         let currentCell = tableView.cellForRow(at: indexPath) as? AppTableViewCell
         let logo = currentCell?.appImageView.image
         viewModel.onTap(selected: selectedApp, logo: logo!)

@@ -10,22 +10,20 @@ import Foundation
 import Bond
 
 struct AppTableViewCellModelDataSource {
-    let entry: Entry
+    let entry: AppEntity
 }
 
 class AppTableViewCellModel {
-    private let entry: Entry
+    private let entry: AppEntity
     let appName: Observable<String?>
     let appDescription: Observable<String?>
-    let appPrice: Observable<String?>
     let appImage = Observable<UIImage?>(UIImage(named: "app_placeholder"))
     
     init(dataSource: AppTableViewCellModelDataSource) {
         entry = dataSource.entry
-        appName = Observable(entry.name?.label ?? "")
-        appDescription = Observable(entry.summary?.label ?? "")
-        appPrice = Observable(entry.price?.label ?? "")
-        getImage(from: entry.image?.first?.label ?? "")
+        appName = Observable(entry.name ?? "")
+        appDescription = Observable(entry.summary ?? "")
+        getImage(from: entry.image ?? "")
     }
     
     func getImage(from url: String) {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import Bond
 
 struct MainViewModelDataSource: ViewModelDataSource {
@@ -16,14 +17,19 @@ struct MainViewModelDataSource: ViewModelDataSource {
 class MainViewModel {
     private let router: MainViewRouter
     private(set) var context: Context
-    
-    let apps = Observable<[Entry]>([])
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let coreDatacontext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let storedApps = Observable<[AppEntity]>([])
     let titleView = Observable("")
     
     init(dataSource: MainViewModelDataSource, router: MainViewRouter) {
         self.context = dataSource.context
         self.router = router
-        getInfo()
+        if Reachability.isConnectedToNetwork() {
+            getInfo()
+        } else {
+            fetchInfoFromCoreData()
+        }
     }
     
     func getInfo() {
@@ -36,12 +42,50 @@ class MainViewModel {
     }
     
     func setEntries(entryArray: [Entry], title: String) {
-        apps.value = entryArray
         titleView.value = title
+        if !entryArray.isEmpty {
+            storedApps.value = saveInfoInCoreData(result: entryArray)
+        }
     }
     
-    func onTap(selected: Entry, logo: UIImage ) {
+    func onTap(selected: AppEntity, logo: UIImage ) {
         let dataSource = DetailViewModelDataSource(context: context, entry: selected, logo: logo)
         router.routeToDetail(dataSource: dataSource)
+    }
+    
+    func fetchInfoFromCoreData() {
+        do {
+            storedApps.value = try coreDatacontext.fetch(AppEntity.fetchRequest())
+            titleView.value = "No conection, stored values"
+        } catch let error as NSError {
+            debugPrint("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+    
+    func saveInfoInCoreData(result: [Entry]) -> [AppEntity] {
+         emptyCoreData()
+        var array = [AppEntity]()
+        for element in result {
+            let appData = AppEntity(entity: AppEntity.entity(), insertInto: coreDatacontext)
+            appData.name = element.name?.label ?? ""
+            appData.image = element.image?.first?.label ?? ""
+            appData.releaseDate = element.releaseDate?.label ?? ""
+            appData.rigths = element.rights?.label ?? ""
+            appData.summary = element.summary?.label ?? ""
+            array.append(appData)
+        }
+        appDelegate.saveContext()
+        return array
+    }
+    
+    func emptyCoreData() {
+        do {
+            let objects = try coreDatacontext.fetch(AppEntity.fetchRequest())
+            for obj in objects {
+                coreDatacontext.delete(obj as! NSManagedObject)
+            }
+        } catch let error as NSError {
+            debugPrint("Could not fetch \(error), \(error.userInfo)")
+        }
     }
 }

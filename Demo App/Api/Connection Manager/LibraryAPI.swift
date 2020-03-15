@@ -14,13 +14,14 @@ class LibraryAPI {
     static let sharedInstance = LibraryAPI()
     
     func getInformation(Success onSuccess:@escaping (Feed) -> (), onError: @escaping (String) -> ()) {
-        #if DEBUG
-            let method = "limit=20/json"
-        #else
-            let method = "limit=5/json"
-        #endif
-        
-        HTTPClient.sharedInstance.doRequest(method:method , type: "GET", parameters: nil, onSuccess: {(data) in
+        var method = ""
+        switch Environment.current {
+        case .development:
+            method = "limit=20/json"
+        default:
+            method = "limit=5/json"
+        }
+        HTTPClient.sharedInstance.doRequest(method: method, type: "GET", parameters: nil, onSuccess: {(data) in
             if let info = data.feed {
                 onSuccess(info)
             } else {
