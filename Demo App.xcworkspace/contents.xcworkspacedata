@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Volumes/Photos HDD/CityFlag/Demo App/CoreData/AppEntity+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Volumes/Photos HDD/CityFlag/Demo App/CoreData/AppEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:Demo App.xcodeproj">
    </FileRef>
    <FileRef

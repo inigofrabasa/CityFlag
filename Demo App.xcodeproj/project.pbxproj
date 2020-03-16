@@ -99,8 +99,10 @@
 		146F484A241C4F2D0019FDA4 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F4835241C4F2D0019FDA4 /* Link.swift */; };
 		146F484B241C4F2D0019FDA4 /* Rights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F4836241C4F2D0019FDA4 /* Rights.swift */; };
 		146F484C241C4F2D0019FDA4 /* Id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F4837241C4F2D0019FDA4 /* Id.swift */; };
-		148ED702241EC139007355BD /* AppEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148ED700241EC139007355BD /* AppEntity+CoreDataProperties.swift */; };
-		148ED703241EC139007355BD /* AppEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148ED701241EC139007355BD /* AppEntity+CoreDataClass.swift */; };
+		148ED706241F0453007355BD /* AppEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148ED704241F0453007355BD /* AppEntity+CoreDataProperties.swift */; };
+		148ED707241F0453007355BD /* AppEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148ED704241F0453007355BD /* AppEntity+CoreDataProperties.swift */; };
+		148ED708241F0453007355BD /* AppEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148ED705241F0453007355BD /* AppEntity+CoreDataClass.swift */; };
+		148ED709241F0453007355BD /* AppEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148ED705241F0453007355BD /* AppEntity+CoreDataClass.swift */; };
 		14B2D62E241CA8CD002E0F45 /* DemoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14B2D62C241CA8CD002E0F45 /* DemoApp.xcdatamodeld */; };
 		169383B5956A20886B2137AC /* Pods_Demo_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1AE05A307BA3D7758B9C8 /* Pods_Demo_App.framework */; };
 /* End PBXBuildFile section */
@@ -168,8 +170,8 @@
 		146F4835241C4F2D0019FDA4 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		146F4836241C4F2D0019FDA4 /* Rights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rights.swift; sourceTree = "<group>"; };
 		146F4837241C4F2D0019FDA4 /* Id.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Id.swift; sourceTree = "<group>"; };
-		148ED700241EC139007355BD /* AppEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AppEntity+CoreDataProperties.swift"; path = "/Volumes/Photos HDD/CityFlag/Demo App/CoreData/AppEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		148ED701241EC139007355BD /* AppEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AppEntity+CoreDataClass.swift"; path = "/Volumes/Photos HDD/CityFlag/Demo App/CoreData/AppEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		148ED704241F0453007355BD /* AppEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		148ED705241F0453007355BD /* AppEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		14B2D62D241CA8CD002E0F45 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		6FC1AE05A307BA3D7758B9C8 /* Pods_Demo_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB33DFB568F41103DAA33E0E /* Pods-Demo App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo App.debug.xcconfig"; path = "Target Support Files/Pods-Demo App/Pods-Demo App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -379,8 +381,8 @@
 		14B2D62F241CAA32002E0F45 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				148ED701241EC139007355BD /* AppEntity+CoreDataClass.swift */,
-				148ED700241EC139007355BD /* AppEntity+CoreDataProperties.swift */,
+				148ED705241F0453007355BD /* AppEntity+CoreDataClass.swift */,
+				148ED704241F0453007355BD /* AppEntity+CoreDataProperties.swift */,
 				14B2D62C241CA8CD002E0F45 /* DemoApp.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -642,6 +644,8 @@
 				14300FD9241CA074003312C3 /* Price.swift in Sources */,
 				14300FDA241CA074003312C3 /* Updated.swift in Sources */,
 				14300FDB241CA074003312C3 /* Context.swift in Sources */,
+				148ED707241F0453007355BD /* AppEntity+CoreDataProperties.swift in Sources */,
+				148ED709241F0453007355BD /* AppEntity+CoreDataClass.swift in Sources */,
 				14300FDC241CA074003312C3 /* Summary.swift in Sources */,
 				14300FDD241CA074003312C3 /* Uri.swift in Sources */,
 				14300FDE241CA074003312C3 /* MainViewController.swift in Sources */,
@@ -684,6 +688,7 @@
 				146F4842241C4F2D0019FDA4 /* Entry.swift in Sources */,
 				146F481D241C47D10019FDA4 /* HTTPClient.swift in Sources */,
 				14300F87241C6AF8003312C3 /* ApplicationCoordinator.swift in Sources */,
+				148ED706241F0453007355BD /* AppEntity+CoreDataProperties.swift in Sources */,
 				14300F89241C6C48003312C3 /* MainViewBuilder.swift in Sources */,
 				14300F80241C6853003312C3 /* Storyboard.swift in Sources */,
 				146F4816241C45E40019FDA4 /* Environment.swift in Sources */,
@@ -691,11 +696,11 @@
 				146F483A241C4F2D0019FDA4 /* Price.swift in Sources */,
 				146F4840241C4F2D0019FDA4 /* Updated.swift in Sources */,
 				14300F71241C6546003312C3 /* Context.swift in Sources */,
-				148ED703241EC139007355BD /* AppEntity+CoreDataClass.swift in Sources */,
 				146F483D241C4F2D0019FDA4 /* Summary.swift in Sources */,
 				146F4838241C4F2D0019FDA4 /* Uri.swift in Sources */,
 				14300F6A241C63CA003312C3 /* MainViewController.swift in Sources */,
 				146F483C241C4F2D0019FDA4 /* ReleaseDate.swift in Sources */,
+				148ED708241F0453007355BD /* AppEntity+CoreDataClass.swift in Sources */,
 				146F484C241C4F2D0019FDA4 /* Id.swift in Sources */,
 				146F4847241C4F2D0019FDA4 /* Image.swift in Sources */,
 				14300FB0241C7FD4003312C3 /* AppTableViewModel.swift in Sources */,
@@ -705,7 +710,6 @@
 				14300F78241C6781003312C3 /* DetailBuilder.swift in Sources */,
 				14300F84241C6904003312C3 /* DetailRouter.swift in Sources */,
 				146F483E241C4F2D0019FDA4 /* Author.swift in Sources */,
-				148ED702241EC139007355BD /* AppEntity+CoreDataProperties.swift in Sources */,
 				14300F73241C6637003312C3 /* Router.swift in Sources */,
 				146F4800241C409E0019FDA4 /* AppDelegate.swift in Sources */,
 				14300F75241C66C8003312C3 /* MainViewRouter.swift in Sources */,
